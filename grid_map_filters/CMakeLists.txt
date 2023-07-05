@@ -33,7 +33,7 @@ find_package(catkin REQUIRED
 )
 
 find_package(TBB 2020.1 EXACT REQUIRED)
-
+message(WARNING "TBB found? ${TBB_FOUND}")
 find_package(OpenCV REQUIRED)
 
 ###################################
@@ -104,7 +104,7 @@ target_include_directories(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}
   ${catkin_LIBRARIES}
-  ${TBB_LIBRARIES}
+  TBB::tbb
   ${OpenCV_LIBRARIES}
 )
 
@@ -124,7 +124,7 @@ target_include_directories(${PROJECT_NAME}_plugins
 
 target_link_libraries(${PROJECT_NAME}_plugins
   ${PROJECT_NAME}
-  ${TBB_LIBRARIES} # is this necessary?
+  TBB::tbb
   ${OpenCV_LIBRARIES} # is this necessary?
 )
 
